@@ -1,0 +1,59 @@
+:root {
+  --container-color: #1a1e21;
+  --second-color: #fd8f44;
+  --text-color: #172317;
+  --bg-color: #fff;
+  --hover-color: hsl(24, 98%, 58%);
+  --border: 1px solid #eeeeee;
+  --border-radius: 4px;
+
+  --el-text-color-primary: var(--text-color) !important;
+  // --el-menu-item-font-size: 16px !important;
+  --el-color-primary: var(--second-color) !important;
+  --el-menu-hover-bg-color: #fff !important;
+  --el-color-primary-light-3: var(--hover-color) !important;
+  // --el-color-primary-dark-2: var(--hover-color) !important;
+}
+
+.el-button:focus {
+  background-color: var(--hover-color) !important;
+}
+
+.yzx-primary-btn {
+  margin: 0 5px;
+  padding: 4px 10px;
+  font-size: 12px;
+  background-color: var(--second-color);
+  color: #fff;
+  border: 0;
+  border-radius: 2px;
+  &:hover {
+    background-color: var(--hover-color);
+  }
+}
+
+.yzx-danger-btn {
+  margin: 0 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+  background-color: #F56C6C;
+  color: #fff;
+  border: 0;
+  border-radius: 2px;
+  &:hover {
+    background-color: #F89898;
+  }
+}
+
+.yzx-default-btn {
+  margin: 0 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+  background-color: #fff;
+  color: var(--text-color);
+  border: var(--border);
+  border-radius: 2px;
+  &:hover {
+    background-color: #f7f7f7;
+  }
+}
