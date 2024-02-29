@@ -6,6 +6,7 @@
 import { ref, onMounted, watchEffect, onBeforeUnmount } from 'vue'
 import * as echarts from 'echarts'
 import type { EChartsOption } from 'echarts'
+import EventBus from '@/utils/eventBus'
 
 interface Props {
   option: EChartsOption
@@ -24,6 +25,7 @@ onMounted(() => {
   myChart = echarts.init(echartsRef.value)
   watchEffect(() => myChart.setOption(props.option))
   window.addEventListener('resize', resizeEchart)
+  EventBus.on('echartsResize', () => setTimeout(resizeEchart, 300))
 })
 
 onBeforeUnmount(() => {
@@ -34,7 +36,7 @@ onBeforeUnmount(() => {
 
 <style lang="less" scoped>
 .base-chart {
-  width: 100%;
+  // width: 100%;
   height: 100%;
 }
 </style>

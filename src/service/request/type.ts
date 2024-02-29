@@ -1,6 +1,6 @@
 import type { AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 
-interface HTTPInterceptors<T = AxiosResponse> {
+export interface HTTPInterceptors<T = AxiosResponse> {
   requestSuccessFn?: (config: any) => InternalAxiosRequestConfig
   requestFailureFn?: (err: any) => any
   responseSuccessFn?: (res: T) => T

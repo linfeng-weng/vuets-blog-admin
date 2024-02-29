@@ -38,8 +38,6 @@ const mapPathToBreadcrumbs = (path: string, menuList: any[]) => {
 const breadcrumbs = computed(() => {
   return mapPathToBreadcrumbs(route.path, menuList)
 })
-
-console.log(route.path)
 </script>
 
 <style lang="less" scoped>

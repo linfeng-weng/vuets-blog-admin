@@ -1,7 +1,9 @@
 import axios from 'axios'
 import type { AxiosInstance } from 'axios'
-
 import type { HTTPRequestConfig } from './type.ts'
+import { localCache } from '@/utils/cache.js'
+import { ElMessage } from 'element-plus'
+import router from '@/router'
 
 class HTTP {
   instance: AxiosInstance
@@ -21,6 +23,11 @@ class HTTP {
         return res.data
       },
       (err) => {
+        if (err.response?.status === 401) {
+          localCache.clear()
+          ElMessage.error('无效的token,请重新登录!')
+          router.push('login')
+        }
         return Promise.reject(err)
       }
     )

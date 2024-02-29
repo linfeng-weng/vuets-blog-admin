@@ -1,4 +1,3 @@
-import 'animate.css'
 import 'normalize.css'
 import 'element-plus/dist/index.css'
 import './assets/css/index.less'
@@ -10,6 +9,10 @@ import { createApp } from 'vue'
 import pinia from './stores'
 import router from './router'
 import registerIcons from './global/registerIcons'
+import { registerWangEditorMenu } from '@/global/registerWangEditorMenu'
+
+// wangeditor菜单、插件全局注册
+registerWangEditorMenu()
 
 const app = createApp(App)
 

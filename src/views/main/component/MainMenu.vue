@@ -59,6 +59,7 @@ const defaultActive = computed(() => {
   color: #fff;
   .logo {
     display: flex;
+    // align-items: center;
     align-items: flex-end;
     padding: 0 20px;
     column-gap: 5px;
@@ -71,7 +72,7 @@ const defaultActive = computed(() => {
     text-overflow: ellipsis;
 
     img {
-      width: 25px;
+      width: 20px;
     }
   }
   .el-menu {

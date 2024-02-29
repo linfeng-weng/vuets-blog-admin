@@ -18,6 +18,9 @@
 import { ref } from 'vue'
 import MainMenu from './component/MainMenu.vue'
 import MainHeader from './component/MainHeader.vue'
+import { judgeToken } from '@/service/modules/user'
+
+judgeToken()
 
 const isFold = ref(false)
 const foldChange = (flag: boolean) => {
@@ -48,6 +51,18 @@ const foldChange = (flag: boolean) => {
 
     .el-header {
       padding: 0;
+    }
+
+    .el-main {
+      &::-webkit-scrollbar {
+        width: 6px;
+        height: 0;
+        background: #e8e8e8;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #c1c2c4;
+        border-radius: 10px;
+      }
     }
   }
 }

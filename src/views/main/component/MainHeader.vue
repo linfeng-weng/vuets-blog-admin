@@ -16,11 +16,13 @@
 import { ref } from 'vue'
 import HeaderInfo from './HeaderInfo.vue'
 import HeaderCrumb from './HeaderCrumb.vue'
+import EventBus from '@/utils/eventBus'
 
 const emit = defineEmits(['foldChange'])
 
 const isFold = ref(false)
 const menuIconClick = () => {
+  EventBus.emit('echartsResize')
   isFold.value = !isFold.value
   emit('foldChange', isFold.value)
 }

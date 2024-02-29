@@ -7,7 +7,8 @@ import { ElMessage } from 'element-plus'
 
 const useLoginStore = defineStore('login', {
   state: () => ({
-    token: localStorage.getItem('token') ?? ''
+    token: localCache.getCache('token') ?? '',
+    userinfo: localCache.getCache('userinfo') ?? ''
   }),
 
   actions: {
@@ -15,6 +16,7 @@ const useLoginStore = defineStore('login', {
       try {
         const loginRes = await login(account)
         localCache.setCache('token', loginRes.token)
+        localCache.setCache('userinfo', loginRes.data)
         ElMessage.success('登录成功')
         router.push('/main')
       } catch (error: any) {

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { localCache } from '@/utils/cache'
 import { menuList } from '../config/menu'
+
 import type { RouteRecordRaw } from 'vue-router'
 
 const router = createRouter({
