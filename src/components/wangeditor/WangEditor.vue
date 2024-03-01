@@ -10,6 +10,7 @@
       :defaultConfig="editorConfig"
       :mode="mode"
       @onCreated="handleCreated"
+      @onFocus="editorFocus"
     />
     <Dialog
       dialogTitle="AI助手"
@@ -67,6 +68,7 @@ const contentImg = ref<string[]>([])
 const deleteImg = ref<string[]>([])
 let imageList_upload: string[] = [] //已上传的图片数组
 let imageList_current: ImageElement[] = [] //当前编辑器的所有图片数组
+let editorFocusFlag = false
 
 const dialogVisible = ref(false)
 
@@ -85,6 +87,15 @@ const handleCreated = (editor: any) => {
   if (isJumpById.value) {
     titleValue.value = articleEditData.value.title ?? ''
     valueHtml.value = articleEditData.value.content ?? ''
+  }
+  // const EditorImg = editorRef.value.getElemsByType('image')
+}
+
+const editorFocus = () => {
+  if (!editorFocusFlag) {
+    editorFocusFlag = true
+    const editorImgList: ImageElement[] = editorRef.value.getElemsByType('image')
+    imageList_upload = editorImgList.map((item) => item.alt)
   }
 }
 
@@ -138,7 +149,7 @@ editorConfig.MENU_CONF!['uploadImage'] = {
   maxFileSize: 3 * 1024 * 1024,
   headers: { Authorization: 'Bearer ' + localCache.getCache('token') },
   customInsert(res: any, insertFn: InsertFnType) {
-    const url = serverURL + res.coverURL
+    const url = res.coverURL
     const alt = res.coverURL
     insertFn(url, alt)
   },
@@ -204,12 +215,14 @@ defineExpose({ titleValue, valueHtml, abstractValue, contentImg, deleteImg, getT
     font-style: italic;
   }
   a {
-    text-decoration: revert;
+    color: #0269c8;
+    text-decoration: underline;
   }
   blockquote {
     background-color: #f7f7f7;
     border-left: 5px solid var(--second-color);
-    font-style: italic;
+    padding: 10px;
+    margin: 10px 0;
   }
 
   pre > code {

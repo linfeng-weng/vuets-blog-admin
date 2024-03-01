@@ -1,14 +1,22 @@
 export default function countNumber(element: HTMLElement, duration: number = 1000) {
-  let startNum = 0
+  const startNum = 0
   const endNum = Number(element.innerText)
-  const singleNumTime = duration / endNum
-  const timer = setInterval(() => {
-    if (startNum >= endNum) {
-      clearInterval(timer)
-      element.innerText = String(endNum)
+  const range = endNum - startNum
+  let startTime: number
+
+  const animateCount = (timestamp: number) => {
+    if (!startTime) startTime = timestamp
+    const elapsed = timestamp - startTime
+    const progress = Math.min(elapsed / duration, 1)
+    const currentNumber = Math.floor(progress * range + startNum)
+    element.innerText = String(currentNumber)
+
+    if (progress < 1) {
+      requestAnimationFrame(animateCount)
     } else {
-      startNum++
-      element.innerText = String(startNum)
+      element.innerText = String(endNum)
     }
-  }, singleNumTime)
+  }
+
+  requestAnimationFrame(animateCount)
 }
