@@ -3,7 +3,7 @@ import type { IAiImage } from '@/types'
 
 export function GenerateAbstractApi(input: string) {
   return httpRequest.post({
-    url: '/api/baidu_ai/qcl_2_13b',
+    url: '/baidu_ai/qcl_2_13b',
     data: {
       type: 'ArticleAbstract',
       input
@@ -13,7 +13,7 @@ export function GenerateAbstractApi(input: string) {
 
 export function GenerateArticleMessageApi(input: any, type: string) {
   return httpRequest.post({
-    url: '/api/baidu_ai/qcl_2_13b',
+    url: '/baidu_ai/qcl_2_13b',
     data: {
       type,
       input
@@ -23,7 +23,7 @@ export function GenerateArticleMessageApi(input: any, type: string) {
 
 export function GenerateImageApi(data: IAiImage) {
   return httpRequest.post({
-    url: '/api/baidu_ai/sd_xl',
+    url: '/baidu_ai/sd_xl',
     data
   })
 }

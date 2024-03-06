@@ -28,6 +28,10 @@ export default defineConfig(({ mode }) => {
     ],
     server: {
       proxy: {
+        '/api': {
+          target: env.VITE_SERVER_URL,
+          changeOrigin: true
+        },
         '/images': {
           target: env.VITE_SERVER_URL,
           changeOrigin: true

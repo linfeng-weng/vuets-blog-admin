@@ -7,14 +7,14 @@ interface ITag {
 // 获取分类
 export function getTagApi() {
   return httpRequest.get({
-    url: '/api/tags'
+    url: '/tags'
   })
 }
 
 // 新建分类
 export function createTagApi(data: ITag) {
   return httpRequest.post({
-    url: '/api/tags',
+    url: '/tags',
     data
   })
 }
@@ -22,14 +22,14 @@ export function createTagApi(data: ITag) {
 // 根据id删除分类
 export function deleteTagApi(id: string) {
   return httpRequest.delete({
-    url: `/api/tags/${id}`
+    url: `/tags/${id}`
   })
 }
 
 // 根据id编辑分类
 export function editTagApi(id: string, data: ITag) {
   return httpRequest.patch({
-    url: `/api/tags/${id}`,
+    url: `/tags/${id}`,
     data
   })
 }
@@ -37,6 +37,6 @@ export function editTagApi(id: string, data: ITag) {
 // 根据分类id获取文章列表
 export function getArticleByTidApi(id: string) {
   return httpRequest.get({
-    url: `/api/tags/${id}`
+    url: `/tags/${id}`
   })
 }
