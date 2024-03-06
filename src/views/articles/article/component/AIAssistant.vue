@@ -66,7 +66,7 @@ const functionClick = (index: number, type: string) => {
 const getData = (type: DataType) => {
   const dataObj = {
     TextPolishing: props.content,
-    TitleGeneration: props.title,
+    TitleGeneration: props.content,
     ArticleOutline: { title: props.title, content: props.content }
   }
   return dataObj[type]
